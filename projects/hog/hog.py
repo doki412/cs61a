@@ -93,6 +93,26 @@ def square_update(num_rolls, player_score, opponent_score, dice=six_sided):
 
 # BEGIN PROBLEM 4
 "*** YOUR CODE HERE ***"
+
+
+def perfect_square(score):
+    n = 1
+    while n * n <= score:
+        if n * n == score:
+            return True
+        n += 1
+    return False
+
+
+def next_perfect_square(score):
+    n = 1
+    while n * n <= score:
+        if n * n == score:
+            n += 1
+            return n * n
+        n += 1
+
+
 # END PROBLEM 4
 
 
