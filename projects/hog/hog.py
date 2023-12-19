@@ -44,6 +44,11 @@ def tail_points(opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    assert type(opponent_score) == int, "opponent_score must be an integer."
+    assert opponent_score >= 0, "Must at least zero point."
+    ones, opponent_score = opponent_score % 10, opponent_score // 10
+    tens = opponent_score % 10
+    return 2 * abs(tens - ones) + 1
     # END PROBLEM 2
 
 
@@ -61,6 +66,7 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     assert num_rolls <= 10, "Cannot roll more than 10 dice."
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    
     # END PROBLEM 3
 
 
