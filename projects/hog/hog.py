@@ -290,7 +290,7 @@ def average_win_rate(strategy, baseline=always_roll(6)):
     win_rate_as_player_0 = 1 - make_averaged(winner)(strategy, baseline)
     win_rate_as_player_1 = make_averaged(winner)(baseline, strategy)
 
-    return (win_rate_as_player_0 + win_rate_as_player_1) / 2
+    return (win_rate_as_player_0 + win_rate_as_player_1) / 2 
 
 
 def run_experiments():
@@ -314,7 +314,11 @@ def tail_strategy(score, opponent_score, threshold=12, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Square Swine.
     """
     # BEGIN PROBLEM 10
-    return num_rolls  # Remove this line once implemented.
+    tens, ones = opponent_score // 10 % 10, opponent_score % 10
+    tail_val = 2 * abs(tens - ones) + 1
+    if tail_val < threshold:
+        return num_rolls
+    else: return 0
     # END PROBLEM 10
 
 
