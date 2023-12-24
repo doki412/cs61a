@@ -2,7 +2,6 @@
 
 from dice import six_sided, make_test_dice
 from ucb import main, trace, interact
-from math import log2
 
 GOAL = 100  # The goal of Hog is to score 100 points.
 
@@ -262,6 +261,16 @@ def max_scoring_num_rolls(dice=six_sided, total_samples=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    average_dice = make_averaged(roll_dice, total_samples)
+    num_roll, ret_num_roll, max_scoring = 1, 1, 0
+    while num_roll < 11:
+        scoring = average_dice(num_roll, dice)
+        # max_scoring = max(scoring, max_scoring)
+        if scoring > max_scoring:
+            max_scoring = scoring
+            ret_num_roll = num_roll
+        num_roll += 1
+    return ret_num_roll
     # END PROBLEM 9
 
 
