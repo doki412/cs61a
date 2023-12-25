@@ -32,6 +32,12 @@ def product(n, term):
     162
     """
     "*** YOUR CODE HERE ***"
+    i, prod = 1, 1
+    while i < n + 1:
+        prod *= term(i)
+        i += 1
+    return prod
+    
 
 
 def accumulate(merger, start, n, term):
