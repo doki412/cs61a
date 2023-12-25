@@ -65,7 +65,11 @@ def accumulate(merger, start, n, term):
     16
     """
     "*** YOUR CODE HERE ***"
-
+    i = 1
+    while i < n + 1:
+        start = merger(start, term(i))
+        i += 1
+    return start
 
 def summation_using_accumulate(n, term):
     """Returns the sum: term(0) + ... + term(n), using accumulate.
