@@ -67,14 +67,17 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+
     def helper(n, i, curr, direction):
         if i == n:
             return curr
         elif i % 8 == 0 or num_eights(i) > 0:
-            return helper(n, i + 1, curr - direction, - direction)
+            return helper(n, i + 1, curr - direction, -direction)
         else:
             return helper(n, i + 1, curr + direction, direction)
+
     return helper(n, 1, 1, 1)
+
 
 def next_larger_coin(coin):
     """Returns the next larger coin in order.
@@ -130,6 +133,19 @@ def count_coins(change):
     True
     """
     "*** YOUR CODE HERE ***"
+
+    def constrained_count(total, smallest_coin):
+        if total == 0:
+            return 1
+        if total < 0:
+            return 0
+        if smallest_coin == None:
+            return 0
+        without_coin = constrained_count(total, next_larger_coin(smallest_coin))
+        with_coin = constrained_count(total - smallest_coin, smallest_coin)
+        return without_coin + with_coin
+
+    return constrained_count(change, 1)
 
 
 anonymous = False  # Change to True if you would like to remain anonymous on the final leaderboard.
