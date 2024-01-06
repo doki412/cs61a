@@ -15,6 +15,7 @@ def my_map(fn, seq):
     """
     return [fn(x) for x in seq]
 
+
 def my_filter(pred, seq):
     """Keeps elements in seq only if they satisfy pred.
     >>> my_filter(lambda x: x % 2 == 0, [1, 2, 3, 4])  # new list has only even-valued elements
@@ -31,7 +32,8 @@ def my_filter(pred, seq):
     >>> my_filter(lambda x: max(5, x) == 5, [1, 2, 3, 4, 5, 6, 7])
     [1, 2, 3, 4, 5]
     """
-    return ______
+    return [x for x in seq if pred(x)]
+
 
 def my_reduce(combiner, seq):
     """Combines elements in seq using combiner.
@@ -46,6 +48,11 @@ def my_reduce(combiner, seq):
     11
     """
     "*** YOUR CODE HERE ***"
+    ret = seq[0]
+    for i in seq[1:]:
+        ret = combiner(ret, i)
+    return ret
+
 
 def my_map_syntax_check():
     """Check that your two_of_three code consists of nothing but a return statement.
@@ -56,6 +63,7 @@ def my_map_syntax_check():
     ['Expr', 'Return']
     """
     # You don't need to edit this function. It's just here to check your work.
+
 
 def my_filter_syntax_check():
     """Check that your two_of_three code consists of nothing but a return statement.
@@ -69,7 +77,7 @@ def my_filter_syntax_check():
 
 
 def double_eights(n):
-    """ Returns whether or not n has two digits in row that
+    """Returns whether or not n has two digits in row that
     are the number 8. Assume n has at least two digits in it.
 
     >>> double_eights(1288)
@@ -90,6 +98,12 @@ def double_eights(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n == 0:
+        return False
+    elif n % 10 == 8 and n // 10 % 10 == 8:
+        return True
+    else:
+        return double_eights(n // 10)
 
 
 def merge(lst1, lst2):
@@ -117,6 +131,12 @@ def merge(lst1, lst2):
     True
     """
     "*** YOUR CODE HERE ***"
+    if not lst1 or not lst2:
+        return lst1 + lst2
+    elif lst1[0] < lst2[0]:
+        return [lst1[0]] + merge(lst1[1:], lst2)
+    else:
+        return [lst2[0]] + merge(lst2[1:], lst1)
 
 
 def summation(n, term):
@@ -148,4 +168,3 @@ def count_palindromes(L):
     2
     """
     return ______
-
