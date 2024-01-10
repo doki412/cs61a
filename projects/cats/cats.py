@@ -92,6 +92,25 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    correct_num = 0
+    if len(typed_words) == 0:
+        if len(source_words) == 0:
+            return 100.0
+        else:
+            return 0.0
+    else:
+        if len(typed_words) <= len(source_words):
+            for i, word in enumerate(typed_words):
+                if word == source_words[i]:
+                    correct_num += 1
+            return correct_num / len(typed_words) * 100.0
+        else:
+            for i, word in enumerate(source_words):
+                if word == typed_words[i]:
+                    correct_num += 1
+            return correct_num / len(typed_words) * 100.0
+
+                
     # END PROBLEM 3
 
 
