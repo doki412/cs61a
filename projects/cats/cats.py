@@ -171,7 +171,7 @@ def autocorrect(typed_word, word_list, diff_function, limit):
         elif diff == min_diff:
             if diff == limit:
                 if correct_word == "":
-                    correct_word =  word
+                    correct_word = word
     if correct_word:
         return correct_word
     else:
@@ -202,7 +202,18 @@ def feline_fixes(typed, source, limit):
     5
     """
     # BEGIN PROBLEM 6
-    assert False, "Remove this line"
+    if typed == source:
+        return 0
+    if limit == 0:
+        return 1
+    elif len(typed) == 0:
+        return len(source)
+    elif len(source) == 0:
+        return len(typed)
+    elif typed[0] == source[0]:
+        return feline_fixes(typed[1:], source[1:], limit)
+    else:
+        return 1 + feline_fixes(typed[1:], source[1:], limit -1)
     # END PROBLEM 6
 
 
