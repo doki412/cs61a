@@ -294,6 +294,15 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    correct_num = 0
+    for i, word in enumerate(typed):
+        if word == source[i]:
+            correct_num += 1
+        else:
+            upload({'id': user_id, 'progress': correct_num / len(source)})
+            return correct_num / len(source)
+    upload({'id': user_id, 'progress': correct_num / len(source)})
+    return correct_num / len(source)
     # END PROBLEM 8
 
 
