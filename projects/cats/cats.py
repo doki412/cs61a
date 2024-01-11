@@ -213,7 +213,7 @@ def feline_fixes(typed, source, limit):
     elif typed[0] == source[0]:
         return feline_fixes(typed[1:], source[1:], limit)
     else:
-        return 1 + feline_fixes(typed[1:], source[1:], limit -1)
+        return 1 + feline_fixes(typed[1:], source[1:], limit - 1)
     # END PROBLEM 6
 
 
@@ -237,23 +237,22 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, "Remove this line"
-    if ___________:  # Base cases should go here, you may add more base cases as needed.
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    if (typed == source):  # Base cases should go here, you may add more base cases as needed.
+        return 0
+    if limit == 0:
+        return 1
+    if len(typed) == 0:
+        return len(source)
+    if len(source) == 0:
+        return len(typed)
     # Recursive cases should go below here
-    if ___________:  # Feel free to remove or add additional cases
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    if typed[0] == source[0]:  # Feel free to remove or add additional cases
+        return minimum_mewtations(typed[1:], source[1:], limit)
     else:
-        add = ...  # Fill in these lines
-        remove = ...
-        substitute = ...
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+        add = 1 + minimum_mewtations(typed, source[1:], limit - 1)  # Fill in these lines
+        remove = 1 + minimum_mewtations(typed[1:], source, limit - 1)
+        substitute = 1 + minimum_mewtations(typed[1:], source[1:], limit - 1)
+        return min(add, remove, substitute)
 
 
 def final_diff(typed, source, limit):
