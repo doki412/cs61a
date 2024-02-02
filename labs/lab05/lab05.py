@@ -209,6 +209,12 @@ def sprout_leaves(t, leaves):
           2
     """
     "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        return tree(label(t), [tree(leaf) for leaf in leaves])
+    else:
+        return tree(label(t), [sprout_leaves(b, leaves) for b in branches(t)])
+        # for b in branches(t):
+        #     sprout_leaves(b, leaves)
 
 
 # Abstraction tests for sprout_leaves and berry_finder
@@ -302,7 +308,7 @@ def add_trees(t1, t2):
     4
       6
       4
-    >>> print_tree(add_trees(tree(2, [tree(3, [tree(4), tree(5)])]), \
+    >>> print_tree(add_trees(tree(2, [tree(3, [tree(4), tree(5)])]),
     tree(2, [tree(3, [tree(4)]), tree(5)])))
     4
       6
@@ -416,5 +422,3 @@ def copy_tree(t):
     5
     """
     return tree(label(t), [copy_tree(b) for b in branches(t)])
-
-
