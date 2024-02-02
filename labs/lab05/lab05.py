@@ -59,12 +59,13 @@ def closer_city(lat, lon, city_a, city_b):
     'Bucharest'
     """
     "*** YOUR CODE HERE ***"
-    city_fake = make_city('city_fake', lat, lon)
+    city_fake = make_city("city_fake", lat, lon)
     distance1, distance2 = distance(city_fake, city_a), distance(city_fake, city_b)
     if distance1 > distance2:
         return get_name(city_b)
     else:
         return get_name(city_a)
+
 
 def check_city_abstraction():
     """
@@ -166,6 +167,12 @@ def berry_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
+    if label(t) == "berry":
+        return True
+    if is_leaf(t):
+        return label(t) == "berry"
+    else:
+        return any([berry_finder(b) for b in branches(t)])
 
 
 def sprout_leaves(t, leaves):
@@ -409,3 +416,5 @@ def copy_tree(t):
     5
     """
     return tree(label(t), [copy_tree(b) for b in branches(t)])
+
+
