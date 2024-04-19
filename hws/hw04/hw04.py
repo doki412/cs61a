@@ -19,7 +19,7 @@ def mobile(left, right):
     assert is_arm(left), "left must be a arm"
     assert is_arm(right), "right must be a arm"
     return ['mobile', left, right]
-
+ 
 
 def is_mobile(m):
     """Return whether m is a mobile."""
